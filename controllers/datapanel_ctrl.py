@@ -28,7 +28,7 @@ class DataPanelController(object):
                                                                    os.path.relpath(fldr, pathfinder.data_path()))
             data_item = self.view.data_tree.AppendItem(sub_folders.get(fldr, self.view.data_tree_root),
                                                        os.path.basename(file))
-            self.view.data_tree.SetPyData(data_item, file)
+            self.view.data_tree.SetItemData(data_item, file)
 
     def clear_tree(self):
         """Removes the contents of the view's data tree"""
@@ -40,5 +40,5 @@ class DataPanelController(object):
         """Updates the currently selected data set"""
         item = evt.GetItem()
         if item:
-            self.data = self.view.data_tree.GetItemPyData(item)
+            self.data = self.view.data_tree.GetItemData(item)
         evt.Skip()

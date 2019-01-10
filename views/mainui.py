@@ -56,38 +56,38 @@ class UI(wx.Frame):
         self.import_mnu = wx.Menu()
         hdf5_mnui = wx.MenuItem(self.import_mnu, wx.ID_ANY, text="HDF5 File...",
                                 helpString="Copies an HDF5 file to your NDIToolbox data folder")
-        self.import_mnu.AppendItem(hdf5_mnui)
+        self.import_mnu.Append(hdf5_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_import_hdf5, id=hdf5_mnui.GetId())
         txt_mnui = wx.MenuItem(self.import_mnu, wx.ID_ANY, text="Text File (CSV, etc.)...",
                                helpString="Imports delimited ASCII data file")
-        self.import_mnu.AppendItem(txt_mnui)
+        self.import_mnu.Append(txt_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_import_text, id=txt_mnui.GetId())
         csc_mnui = wx.MenuItem(self.import_mnu, wx.ID_ANY, text="UTWin CScan (.csc)...",
                                helpString="Imports a .csc file")
-        self.import_mnu.AppendItem(csc_mnui)
+        self.import_mnu.Append(csc_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_import_csc, id=csc_mnui.GetId())
         sdt_mnui = wx.MenuItem(self.import_mnu, wx.ID_ANY, text="Winspect 6/7 CScan (.sdt)...",
                                helpString="Imports a .sdt file")
-        self.import_mnu.AppendItem(sdt_mnui)
+        self.import_mnu.Append(sdt_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_import_sdt, id=sdt_mnui.GetId())
         dicom_mnui = wx.MenuItem(self.import_mnu, wx.ID_ANY, text="DICOM/DICONDE...",
                                  helpString="Imports a DICOM / DICONDE data file")
-        self.import_mnu.AppendItem(dicom_mnui)
+        self.import_mnu.Append(dicom_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_import_dicom, id=dicom_mnui.GetId())
         img_mnui = wx.MenuItem(self.import_mnu, wx.ID_ANY, text="Image...",
                                helpString="Imports an image file")
         self.Bind(wx.EVT_MENU, self.controller.on_import_image, id=img_mnui.GetId())
-        self.import_mnu.AppendItem(img_mnui)
-        self.file_mnu.AppendMenu(wx.ID_ANY, 'Import...', self.import_mnu)
+        self.import_mnu.Append(img_mnui)
+        self.file_mnu.Append(wx.ID_ANY, 'Import...', self.import_mnu)
         self.file_mnu.AppendSeparator()
         browsedata_mnui = wx.MenuItem(self.file_mnu, wx.ID_ANY, text="Show Data Folder",
                                       helpString="Opens the local storage folder")
-        self.file_mnu.AppendItem(browsedata_mnui)
+        self.file_mnu.Append(browsedata_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_browse_userpath, id=browsedata_mnui.GetId())
         self.file_mnu.AppendSeparator()
         quit_mnui = wx.MenuItem(self.file_mnu, wx.ID_ANY, text="E&xit\tCTRL+X",
                                 helpString="Exit The Program")
-        self.file_mnu.AppendItem(quit_mnui)
+        self.file_mnu.Append(quit_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_quit, id=quit_mnui.GetId())
         self.menubar.Append(self.file_mnu, "&File")
 
@@ -96,22 +96,22 @@ class UI(wx.Frame):
         self.tool_mnu = wx.Menu()
         podtk_mnui = wx.MenuItem(self.tool_mnu, wx.ID_ANY, text="POD Toolkit",
                                  helpString="Runs the Probability Of Detection Toolkit")
-        self.tool_mnu.AppendItem(podtk_mnui)
+        self.tool_mnu.Append(podtk_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_run_podtk, id=podtk_mnui.GetId())
         self.prefs_mnu = wx.Menu() # Preferences Menu
         userpath_mnui = wx.MenuItem(self.prefs_mnu, wx.ID_ANY, text="Choose Data Folder...",
                                     helpString="Specify the local storage folder")
-        self.prefs_mnu.AppendItem(userpath_mnui)
+        self.prefs_mnu.Append(userpath_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_choose_userpath, id=userpath_mnui.GetId())
         log_mnui = wx.MenuItem(self.prefs_mnu, wx.ID_ANY, text="Choose Logging Level...",
                                     helpString="Specify the severity of events recorded in the application log")
-        self.prefs_mnu.AppendItem(log_mnui)
+        self.prefs_mnu.Append(log_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_choose_loglevel, id=log_mnui.GetId())
-        self.tool_mnu.AppendMenu(wx.ID_ANY, 'Preferences', self.prefs_mnu)
+        self.tool_mnu.Append(wx.ID_ANY, 'Preferences', self.prefs_mnu)
         self.tool_mnu.AppendSeparator()
         gc_mnui = wx.MenuItem(self.tool_mnu, wx.ID_ANY, text="Free Memory...",
                               helpString="Attempt to free up memory by scheduling garbage collection")
-        self.tool_mnu.AppendItem(gc_mnui)
+        self.tool_mnu.Append(gc_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_gc, id=gc_mnui.GetId())
         self.menubar.Append(self.tool_mnu, "&Tools")
 
@@ -120,53 +120,53 @@ class UI(wx.Frame):
         self.help_mnu = wx.Menu()
         help_mnui = wx.MenuItem(self.help_mnu, wx.ID_ANY, text="Help Topics",
                                 helpString="Opens the help documentation in your web browser")
-        self.help_mnu.AppendItem(help_mnui)
+        self.help_mnu.Append(help_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_help, id=help_mnui.GetId())
         quickstart_mnui = wx.MenuItem(self.help_mnu, wx.ID_ANY, text="Getting Started",
                                       helpString="Opens the Getting Started Guide")
-        self.help_mnu.AppendItem(quickstart_mnui)
+        self.help_mnu.Append(quickstart_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_quickstart, id=quickstart_mnui.GetId())
 
         self.plugins_mnu = wx.Menu()
         plugins_mnui = wx.MenuItem(self.plugins_mnu, wx.ID_ANY, text="Using Plugins",
                                    helpString="Opens introduction to using NDIToolbox plugins")
-        self.plugins_mnu.AppendItem(plugins_mnui)
+        self.plugins_mnu.Append(plugins_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_plugins, id=plugins_mnui.GetId())
         plugins_dev_mnui = wx.MenuItem(self.plugins_mnu, wx.ID_ANY, text="Writing Plugins",
                                        helpString="Opens introduction to writing NDIToolbox plugins")
-        self.plugins_mnu.AppendItem(plugins_dev_mnui)
+        self.plugins_mnu.Append(plugins_dev_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_plugins_dev, id=plugins_dev_mnui.GetId())
         plugins_samples_mnui = wx.MenuItem(self.plugins_mnu, wx.ID_ANY, text="Examples",
                                            helpString="Opens examples of NDIToolbox plugins")
-        self.plugins_mnu.AppendItem(plugins_samples_mnui)
+        self.plugins_mnu.Append(plugins_samples_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_plugins_samples, id=plugins_samples_mnui.GetId())
-        self.help_mnu.AppendMenu(wx.ID_ANY, "NDIToolbox Plugins", self.plugins_mnu)
+        self.help_mnu.Append(wx.ID_ANY, "NDIToolbox Plugins", self.plugins_mnu)
         self.help_mnu.AppendSeparator()
         about_mnui = wx.MenuItem(self.help_mnu, wx.ID_ANY, text="About This Program...",
                                  helpString="About This Program")
-        self.help_mnu.AppendItem(about_mnui)
+        self.help_mnu.Append(about_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_about, id=about_mnui.GetId())
         license_mnui = wx.MenuItem(self.help_mnu, wx.ID_ANY, text="License Information...",
                                    helpString="License Information")
-        self.help_mnu.AppendItem(license_mnui)
+        self.help_mnu.Append(license_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_about_license, id=license_mnui.GetId())
         about_tri_mnui = wx.MenuItem(self.help_mnu, wx.ID_ANY, text='About TRI/Austin...',
                                      helpString="About TRI/Austin's NDE Division")
-        self.help_mnu.AppendItem(about_tri_mnui)
+        self.help_mnu.Append(about_tri_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_about_tri, id=about_tri_mnui.GetId())
         about_icons_mnui = wx.MenuItem(self.help_mnu, wx.ID_ANY, text="About Axialis Icons...",
                                        helpString="About the Axialis icons used in this project")
-        self.help_mnu.AppendItem(about_icons_mnui)
+        self.help_mnu.Append(about_icons_mnui)
         self.Bind(wx.EVT_MENU, self.controller.on_about_icons, id=about_icons_mnui.GetId())
         self.help_mnu.AppendSeparator()
         displaylog_mnui = wx.MenuItem(self.help_mnu, wx.ID_ANY, text="Display Application Log...",
                                       helpString="Displays the NDIToolbox application log")
         self.Bind(wx.EVT_MENU, self.controller.on_display_log, id=displaylog_mnui.GetId())
-        self.help_mnu.AppendItem(displaylog_mnui)
+        self.help_mnu.Append(displaylog_mnui)
         clearlog_mnui = wx.MenuItem(self.help_mnu, wx.ID_ANY, text="Clear Application Log",
                                     helpString="Deletes the NDIToolbox application log")
         self.Bind(wx.EVT_MENU, self.controller.on_clear_log, id=clearlog_mnui.GetId())
-        self.help_mnu.AppendItem(clearlog_mnui)
+        self.help_mnu.Append(clearlog_mnui)
         self.menubar.Append(self.help_mnu, "&Help")
 
     def init_ui(self):
@@ -211,55 +211,55 @@ class UI(wx.Frame):
                                 self.controller.get_preview_state())
         self.Bind(wx.EVT_TOOL, self.controller.on_preview_toggle, self.gen_bitmaps_tool)
         # Refresh UI with contents of data folder
-        self.refresh_data_tool = self.toolbar.AddLabelTool(wx.ID_ANY, 'Refresh',
+        self.refresh_data_tool = self.toolbar.AddTool(wx.ID_ANY, 'Refresh',
                                                            shortHelp='Refresh Data',
                                                            bitmap=self.controller.get_bitmap('Refresh.png'))
         self.Bind(wx.EVT_TOOL, self.controller.on_refresh_data, self.refresh_data_tool)
         self.toolbar.AddSeparator()
         # Add data to data folder
-        self.add_data_tool = self.toolbar.AddLabelTool(wx.ID_ANY, 'Add Data',
+        self.add_data_tool = self.toolbar.AddTool(wx.ID_ANY, 'Add Data',
                                                        shortHelp='Import data to data folder (CTRL-A)',
                                                        bitmap=self.controller.get_bitmap('Plus.png'))
         self.Bind(wx.EVT_TOOL, self.controller.on_add_data, self.add_data_tool)
         # Remove data from data folder
-        self.remove_data_tool = self.toolbar.AddLabelTool(wx.ID_ANY, 'Remove Data',
+        self.remove_data_tool = self.toolbar.AddTool(wx.ID_ANY, 'Remove Data',
             shortHelp='Remove data from data folder',
             bitmap=self.controller.get_bitmap('Minus.png'))
         self.Bind(wx.EVT_TOOL, self.controller.on_remove_data, self.remove_data_tool)
         # Export slice
-        self.export_slice_tool = self.toolbar.AddLabelTool(wx.ID_ANY, 'Slice Data', shortHelp='Export a slice of data',
+        self.export_slice_tool = self.toolbar.AddTool(wx.ID_ANY, 'Slice Data', shortHelp='Export a slice of data',
             bitmap=self.controller.get_bitmap('Slice.png'))
         self.Bind(wx.EVT_TOOL, self.controller.on_slice_data, self.export_slice_tool)
         self.toolbar.AddSeparator()
         # Display info about data
-        self.data_info_tool = self.toolbar.AddLabelTool(wx.ID_ANY, 'Information',
+        self.data_info_tool = self.toolbar.AddTool(wx.ID_ANY, 'Information',
                                                         shortHelp='Display information about the selected data',
                                                         bitmap=self.controller.get_bitmap('Info.png'))
         self.Bind(wx.EVT_TOOL, self.controller.on_data_info, self.data_info_tool)
         # Export data to ASCII
-        self.export_data_tool = self.toolbar.AddLabelTool(wx.ID_ANY, 'Export Data',
+        self.export_data_tool = self.toolbar.AddTool(wx.ID_ANY, 'Export Data',
                                                           shortHelp="Exports selected data to text file",
                                                           bitmap=self.controller.get_bitmap('Save.png'))
         self.Bind(wx.EVT_TOOL, self.controller.on_export_text, self.export_data_tool)
 
         # Preview data in spreadsheet
-        self.preview_data_tool = self.toolbar.AddLabelTool(wx.ID_ANY, 'Preview Data',
+        self.preview_data_tool = self.toolbar.AddTool(wx.ID_ANY, 'Preview Data',
                                                            shortHelp='Preview data in spreadsheet',
                                                            bitmap=self.controller.get_bitmap('Table.png'))
         self.Bind(wx.EVT_TOOL, self.controller.on_preview_data, self.preview_data_tool)
         self.toolbar.AddSeparator()
         # Plot data
-        self.plot_data_tool = self.toolbar.AddLabelTool(wx.ID_ANY, 'X-Y Plot',
+        self.plot_data_tool = self.toolbar.AddTool(wx.ID_ANY, 'X-Y Plot',
                                                         shortHelp='Generates X-Y plot of selected data',
                                                         bitmap=self.controller.get_bitmap('Stats2.png'))
         self.Bind(wx.EVT_TOOL, self.controller.on_plot_data, self.plot_data_tool)
         # Image plot of data
-        self.imageplot_data_tool = self.toolbar.AddLabelTool(wx.ID_ANY, 'Image Plot',
+        self.imageplot_data_tool = self.toolbar.AddTool(wx.ID_ANY, 'Image Plot',
                                                              shortHelp='Generates image plot of selected data',
                                                              bitmap=self.controller.get_bitmap('imgplt.png'))
         self.Bind(wx.EVT_TOOL, self.controller.on_imageplot_data, self.imageplot_data_tool)
         # MegaNDE plot of 3D data
-        self.megaplot_data_tool = self.toolbar.AddLabelTool(wx.ID_ANY, 'Mega Plot',
+        self.megaplot_data_tool = self.toolbar.AddTool(wx.ID_ANY, 'Mega Plot',
                                                             shortHelp='Generates A, B, and C scans of selected data',
                                                             bitmap=self.controller.get_bitmap('dsfplot16.png'))
         self.Bind(wx.EVT_TOOL, self.controller.on_megaplot_data, self.megaplot_data_tool)
@@ -300,7 +300,7 @@ class UI(wx.Frame):
 
 
 def main():
-    app = wx.PySimpleApp()
+    app = wx.App()
     ui = UI()
     ui.Show(True)
     app.MainLoop()

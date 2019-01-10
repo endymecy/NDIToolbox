@@ -83,7 +83,7 @@ def multiprocess_plot(data_filename, width, height):
 def gen_thumbnail(image_stream, data_filename):
     """Returns a wxBitmap of the given image stream.  If the bitmap doesn't exist
     in the thumbnails folder it is saved there for reuse"""
-    img = wx.ImageFromStream(image_stream, type=wx.BITMAP_TYPE_PNG)
+    img = wx.Image(image_stream, type=wx.BITMAP_TYPE_PNG)
     thumb_fn = thumbnail_name(data_filename)
     # Ensure the thumbnails folder exists
     if not os.path.exists(os.path.dirname(thumb_fn)):
@@ -91,8 +91,8 @@ def gen_thumbnail(image_stream, data_filename):
     if not os.path.exists(thumb_fn):
         with open(thumb_fn, 'wb') as img_file:
             # Cache the PNG for reuse
-            img.SaveStream(img_file, type=wx.BITMAP_TYPE_PNG)
-    return wx.BitmapFromImage(img)
+            img.SaveFile(img_file, type=wx.BITMAP_TYPE_PNG)
+    return wx.Bitmap(img)
 
 
 def thumbnail_name(data_filename):

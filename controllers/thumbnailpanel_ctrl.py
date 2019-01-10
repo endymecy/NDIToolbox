@@ -41,8 +41,8 @@ class ThumbnailPanelController(object):
             else:
                 # Thumbnail found, skip generation
                 with open(thumb_fname, 'rb') as img_file:
-                    img = wx.ImageFromStream(img_file, type=wx.BITMAP_TYPE_PNG)
-                    thumbnail = wx.BitmapFromImage(img)
+                    img = wx.Image(img_file, type=wx.BITMAP_TYPE_PNG)
+                    thumbnail = wx.Bitmap(img)
         return thumbnail
 
     def plot_blank(self):
